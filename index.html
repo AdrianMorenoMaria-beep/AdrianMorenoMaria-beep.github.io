@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adrián Moreno María</title>
+<meta property="og:title" content="Adrián Moreno María">
+<meta property="og:description" content="PhD candidate in Applied Economics at the Universitat Autònoma de Barcelona. On the 2026–27 academic job market.">
+<meta property="og:type" content="profile">
+<meta name="description" content="Adrián Moreno María, PhD candidate in Applied Economics at the Universitat Autònoma de Barcelona. Industrial organization, competition policy, digital platforms and demand estimation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+:root{
+  /* Layout: margin-note grid. A narrow left column carries each section's name, the way a working paper's margin would;
+     the right column carries the text. One bold move: the name, set in a wide grotesque that stretches open on load. */
+  --paper:#f3f5f2;
+  --ink:#16201b;
+  --ink-2:#56625c;
+  --rule:#d3dad5;
+  --accent:#1b5a4d;
+  --wash:#e3ebe7;
+  --on-accent:#f3f5f2;
+
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  --step--1:0.8125rem;
+  --step-0:1.0625rem;
+  --step-1:1.25rem;
+  --step-2:1.5rem;
+  --step-3:clamp(2.1rem, 5.6vw + .4rem, 4.75rem);
+  --measure:39rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111714; --ink:#e4eae6; --ink-2:#9aa79f; --rule:#29332e;
+    --accent:#74c3ad; --wash:#18261f; --on-accent:#0e1512; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111714; --ink:#e4eae6; --ink-2:#9aa79f; --rule:#29332e;
+  --accent:#74c3ad; --wash:#18261f; --on-accent:#0e1512; color-scheme:dark;
+}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:var(--step-0);
+  line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing:antialiased;
+}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+img{max-width:100%}
+p, h1, h2, h3, ul, address, figure{margin:0}
+ul{padding:0;list-style:none}
+address{font-style:normal}
+
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:.18em}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+.wrap{width:min(66rem, 100%);margin-inline:auto;padding-inline:clamp(0px, 2.5vw, 1.5rem)}
+
+/* Top bar */
+.top{
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;
+  gap:.5rem 1.5rem;padding-block:1.25rem;
+  font-family:var(--f-mono);font-size:var(--step--1);
+}
+.top .where{color:var(--ink-2)}
+.top nav{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem}
+.top nav a{color:var(--ink);text-decoration:none}
+.top nav a:hover{color:var(--accent)}
+
+/* Hero */
+.hero{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) minmax(0, 12rem);
+  grid-template-areas:"text photo";
+  align-items:end;
+  gap:2rem 3rem;
+  padding-block:clamp(2.5rem, 6vw, 5rem) clamp(2.5rem, 5vw, 4rem);
+}
+.hero-text{grid-area:text;min-width:0}
+.portrait{grid-area:photo}
+.portrait img{
+  display:block;width:100%;max-width:100%;aspect-ratio:4 / 5;object-fit:cover;
+  border-radius:4px;background:var(--wash);
+}
+.jm{
+  display:inline-flex;flex-wrap:wrap;align-items:center;gap:.35rem .6rem;
+  margin-bottom:1.75rem;padding:.4rem .9rem;
+  background:var(--accent);color:var(--on-accent);
+  font-family:var(--f-mono);font-size:var(--step--1);letter-spacing:.02em;
+  border-radius:999px;
+}
+.jm .dot{width:.45rem;height:.45rem;border-radius:50%;background:var(--on-accent);flex:none}
+h1{
+  font-family:var(--f-display);
+  font-weight:640;
+  font-stretch:125%;
+  font-size:var(--step-3);
+  line-height:.98;
+  letter-spacing:-.015em;
+  animation:widen 1.2s cubic-bezier(.2,.7,.1,1) both;
+}
+@keyframes widen{from{font-stretch:70%}to{font-stretch:125%}}
+@media (prefers-reduced-motion: reduce){h1{animation:none}}
+.role{margin-top:1.4rem;font-style:italic;font-size:var(--step-1);line-height:1.45;color:var(--ink-2)}
+.hero-links{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin-top:1.75rem;font-family:var(--f-mono);font-size:.875rem}
+
+@media (max-width: 860px){
+  .hero{grid-template-columns:minmax(0, 1fr);grid-template-areas:"photo" "text";align-items:start}
+  .portrait{width:min(9.5rem, 40%)}
+}
+
+/* Sections */
+.sec .grid{
+  display:grid;
+  grid-template-columns:minmax(0, 11rem) minmax(0, 1fr);
+  gap:1.25rem clamp(1.5rem, 5vw, 4.5rem);
+  padding-block:clamp(2.25rem, 5vw, 3.5rem);
+  border-top:1px solid var(--rule);
+}
+.label{align-self:start;position:sticky;top:calc(env(safe-area-inset-top, 0px) + 1.5rem)}
+.label h2{
+  font-family:var(--f-display);font-stretch:115%;font-weight:600;
+  font-size:var(--step-1);line-height:1.2;letter-spacing:.005em;
+}
+.label .note{margin-top:.35rem;font-family:var(--f-mono);font-size:var(--step--1);color:var(--ink-2)}
+.content{min-width:0;max-width:var(--measure);display:grid;gap:1.1rem}
+
+.k{
+  font-family:var(--f-mono);font-size:.72rem;font-weight:500;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);
+}
+.inline{display:flex;flex-wrap:wrap}
+.inline li + li::before{content:"·";margin-inline:.55em;color:var(--ink-2)}
+.block{display:grid;gap:.5rem;margin-top:.4rem;padding-top:1.1rem;border-top:1px dashed var(--rule)}
+
+/* Papers */
+.entry{display:grid;gap:.55rem}
+.entry + .entry{border-top:1px solid var(--rule);padding-top:2rem;margin-top:.9rem}
+.meta{
+  display:flex;flex-wrap:wrap;align-items:center;gap:.35rem 1rem;
+  font-family:var(--f-mono);font-size:var(--step--1);color:var(--ink-2);
+  font-variant-numeric:tabular-nums;
+}
+.status{
+  padding:.12rem .5rem;border-radius:3px;
+  background:var(--wash);color:var(--accent);
+  font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;
+}
+.status.wip{background:transparent;color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--rule)}
+.entry h3{
+  font-family:var(--f-display);font-stretch:100%;font-weight:600;
+  font-size:var(--step-1);line-height:1.3;text-wrap:balance;
+}
+.authors{font-style:italic;color:var(--ink-2)}
+.paper-links{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;font-family:var(--f-mono);font-size:var(--step--1)}
+
+/* Job market paper: the one block on the page that gets a surface of its own */
+.entry.jmp{
+  background:var(--wash);
+  border-radius:6px;
+  padding:clamp(1.25rem, 3vw, 1.9rem);
+  gap:.7rem;
+}
+.entry.jmp .status{background:var(--accent);color:var(--on-accent)}
+.entry.jmp h3{font-size:var(--step-2);font-stretch:108%;line-height:1.22}
+.entry.jmp + .entry{border-top:0;margin-top:1.4rem;padding-top:0}
+
+/* Dated rows: teaching, experience, education */
+.rows{display:grid;gap:1.15rem}
+.rows > li{display:grid;grid-template-columns:8.5rem minmax(0, 1fr);gap:.2rem 1.25rem}
+.when{
+  font-family:var(--f-mono);font-size:var(--step--1);color:var(--ink-2);
+  font-variant-numeric:tabular-nums;padding-top:.22rem;
+}
+.what{min-width:0}
+.what strong{font-weight:600}
+.what .detail{color:var(--ink-2)}
+.dash{display:grid;gap:.35rem;margin-top:.45rem}
+.dash li{position:relative;padding-left:1.1rem}
+.dash li::before{content:"–";position:absolute;left:0;color:var(--ink-2)}
+@media (max-width: 560px){
+  .rows > li{grid-template-columns:minmax(0, 1fr)}
+  .when{padding-top:0}
+}
+
+/* Contact */
+.email-row{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem}
+.email{
+  font-family:var(--f-display);font-stretch:105%;font-weight:560;
+  font-size:clamp(1.05rem, 2.6vw + .55rem, 1.625rem);
+  overflow-wrap:anywhere;text-decoration:none;
+}
+.email:hover{text-decoration:underline}
+button.copy{
+  font-family:var(--f-mono);font-size:var(--step--1);
+  color:var(--ink);background:transparent;
+  border:1px solid var(--rule);border-radius:4px;
+  padding:.3rem .75rem;cursor:pointer;
+}
+button.copy:hover{border-color:var(--accent);color:var(--accent)}
+address{line-height:1.55}
+
+/* Footer */
+.foot{
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 1.5rem;
+  padding-block:1.75rem 2.5rem;border-top:1px solid var(--rule);
+  font-family:var(--f-mono);font-size:var(--step--1);color:var(--ink-2);
+}
+
+@media (max-width: 760px){
+  .sec .grid{grid-template-columns:minmax(0, 1fr)}
+  .label{position:static}
+}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <span class="where">Applied Economics · UAB</span>
+  <nav aria-label="Sections">
+    <a href="#research">Research</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+    <a href="cv.pdf">CV</a>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero" aria-labelledby="name">
+    <div class="hero-text">
+      <p class="jm"><span class="dot" aria-hidden="true"></span>On the 2026–27 academic job market</p>
+      <h1 id="name">Adrián<br>Moreno María</h1>
+      <p class="role">PhD candidate in Applied Economics<br>Universitat Autònoma de Barcelona</p>
+      <div class="hero-links">
+        <a href="papers/moreno-jmp.pdf">Job market paper (PDF)</a>
+        <a href="cv.pdf">CV (PDF)</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <figure class="portrait">
+      <img src="photo.jpg" alt="Portrait of Adrián Moreno María" width="320" height="400">
+    </figure>
+  </section>
+
+  <section class="sec" id="about">
+    <div class="wrap grid">
+      <div class="label"><h2>About</h2></div>
+      <div class="content">
+        <p>I am a PhD candidate in Applied Economics at the Universitat Autònoma de Barcelona. I work in industrial organization and competition economics, with a focus on digital platforms, e-commerce and demand estimation. In autumn 2025 I was a visiting student at the University of Cambridge.</p>
+        <p>My job market paper studies what followed the European Commission’s 2017 Google Shopping decision. The Commission left the design of compliance to Google, and the results page Google built in response did not restore the visibility of rival comparison shopping services. A related project uses Amazon’s 2025 exit from Google Shopping to show that competition in one advertising format changes firms’ entry into another. A third paper measures what online-only retailers add to competition and welfare in a market traditionally served by click-and-mortar stores.</p>
+        <p>Alongside the PhD I have worked as a research assistant at the European Commission’s Joint Research Centre, on the economics of digital technologies, and I am currently a research assistant at the Institut d’Economia de Barcelona.</p>
+        <div class="block">
+          <p class="k">Fields</p>
+          <ul class="inline">
+            <li>Industrial organization</li>
+            <li>Competition policy</li>
+            <li>Digital platforms and advertising</li>
+            <li>E-commerce</li>
+            <li>Demand estimation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="research">
+    <div class="wrap grid">
+      <div class="label">
+        <h2>Research</h2>
+        <p class="note">3 papers</p>
+      </div>
+      <div class="content">
+
+        <article class="entry jmp">
+          <p class="meta"><span class="status">Job market paper</span><span>May 2026</span><span>JEL L40 · L41 · L86 · K21</span></p>
+          <h3>The House Always Wins: Self-Preferencing After Google Shopping</h3>
+          <p class="authors">with Néstor Duch-Brown (Joint Research Centre, European Commission)</p>
+          <p>Self-preferencing by large digital platforms has become a central concern for antitrust authorities and policymakers. We study one of the earliest and most prominent cases of self-preferencing, the European Commission’s 2017 Google Shopping decision. Google was accused of systematically favoring its own comparison shopping service in search results while downgrading rival comparison shopping websites in its search ranking. The Commission prohibited this conduct but left Google discretion over how to comply: following the €2.42 billion fine, Google redesigned its search results page (SERP), reconfiguring the Shopping Unit to let third-party comparison shopping services (CSS) participate in its advertising system. Because the decision constrained Google’s conduct without prescribing the design of the remedy, what can be causally identified is the effect of Google’s redesign itself, rather than the effect of the decision in the abstract. Using web traffic data, we estimate the effect of this redesign on traffic to comparison shopping websites, comparing European countries where it was implemented with non-European markets where no equivalent design change occurred. Event-study evidence shows that organic traffic to comparison shopping websites in Europe declined further relative to non-European control markets after the redesign, while advertising-related traffic does not significantly increase. Notably, smaller CSS platforms experienced disproportionately larger losses in organic traffic, while larger competitors managed to sustain their visibility. These results suggest that Google’s redesign, while formally compliant, did not restore the visibility of rival CSS, an unintended consequence consistent with a remedy that regulators did not sufficiently monitor or constrain at the level of interface design. While previous work has discussed potential limitations of Google’s compliance mechanism, our paper provides the first causal empirical evaluation of its effects.</p>
+          <p class="paper-links"><a href="papers/moreno-jmp.pdf">PDF</a></p>
+        </article>
+
+        <article class="entry">
+          <p class="meta"><span class="status">Working paper</span><span>JEL L11 · L13 · L81</span></p>
+          <h3>From Brick to Click: The Competitive and Welfare Effects of Digital Retail</h3>
+          <p class="authors">with Néstor Duch-Brown (Joint Research Centre, European Commission)</p>
+          <p>Using panel data on vacuum cleaner sales across Belgium, Germany, and Slovakia from 2015 to 2019, we estimate a random coefficients demand model to quantify the competitive and welfare role of the online-only channel in a market traditionally served by click-and-mortar retailers. We differentiate between click-and-mortar retailers, including technological superstores, small retailers, and mass merchandisers, and online-only retailers, with marketplaces playing a significant role. Removing the online-only channel reduces consumer surplus by 12–17% and producer surplus by 7–10%. The online-only channel disciplines prices through stronger competition, benefiting consumers, while also expanding the overall market by reaching consumers who would otherwise not purchase at all, benefiting producers as well. When the online-only option is unavailable, consumers mainly shift toward retailers that replicate key features of online shopping, wide assortment, price transparency, and immediate product availability, rather than toward smaller, service-oriented stores. Our results highlight the importance of policies that sustain competition in the online environment, as they ensure that the welfare gains from e-commerce are shared across the market.</p>
+          <p class="paper-links"><a href="papers/brick-to-click.pdf">PDF</a></p>
+        </article>
+
+        <article class="entry">
+          <p class="meta"><span class="status wip">Work in progress</span><span>October 2026</span></p>
+          <h3>The Rival Next Door: Competition Across Search Advertising Formats</h3>
+          <p>Digital advertising platforms increasingly combine multiple advertising formats within the same search environment, yet firms’ participation decisions are typically studied within individual formats. We examine whether competition in one advertising format affects firms’ incentives to participate in another. Because product ads and text ads appear on the same results page and compete for the same consumers’ attention, the advertisers shown in one format can change the expected return to advertising in the other. We exploit Amazon’s exit from Google Shopping in July 2025 to identify how a large change in the competitive environment of product advertising affects entry into text search advertising. We find cross-format spillovers: text-ad entry rises after the exit in the keywords where Amazon had a more frequent presence in Shopping, by about 15% of the mean entry rate per standard deviation of exposure, with the response concentrated among manufacturers. We then estimate a structural model of keyword entry with advertiser-level traffic and cost per click to quantify how competitive conditions across formats shape entry incentives. Counterfactual simulations show that, had Amazon remained in Shopping, manufacturers’ participation in text advertising would have been about 16% lower. Our results show that firms’ advertising decisions respond to competition beyond the format in which they participate, so that changes in platform design or market structure can generate competitive effects across advertising formats.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="teaching">
+    <div class="wrap grid">
+      <div class="label">
+        <h2>Teaching</h2>
+        <p class="note">UAB, since 2023</p>
+      </div>
+      <div class="content">
+        <p>I teach undergraduate economics in the Department of Applied Economics at the Universitat Autònoma de Barcelona.</p>
+        <ul class="rows">
+          <li><span class="when">2024 – present</span><span class="what"><strong>Associate Lecturer</strong> <span class="detail">(Professor Associat)</span></span></li>
+          <li><span class="when">2023 – 2024</span><span class="what"><strong>Substitute Lecturer</strong> <span class="detail">(Professor Substitut)</span></span></li>
+          <li><span class="when">Feb – Jul 2023</span><span class="what"><strong>Associate Lecturer</strong> <span class="detail">(Professor Associat)</span></span></li>
+        </ul>
+        <div class="block">
+          <p class="k">Courses</p>
+          <ul class="inline">
+            <li>Introduction to Economics</li>
+            <li>Public Economics</li>
+            <li>International Economics</li>
+            <li>Economic Globalization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="experience">
+    <div class="wrap grid">
+      <div class="label"><h2>Experience</h2></div>
+      <div class="content">
+        <ul class="rows">
+          <li>
+            <span class="when">2025 – present</span>
+            <span class="what"><strong>Research Assistant</strong>, Institut d’Economia de Barcelona (IEB)
+              <ul class="dash"><li>Analysis of firm performance in Catalonia.</li></ul>
+            </span>
+          </li>
+          <li>
+            <span class="when">2021 – 2022<br>2023 – 2024</span>
+            <span class="what"><strong>Research Assistant</strong>, Joint Research Centre, European Commission
+              <ul class="dash">
+                <li>Research on the impacts and strategic role of artificial intelligence and other digital technologies, as part of the EU Coordinated Plan on Artificial Intelligence.</li>
+                <li>Economic analysis supporting the proposed EU regulation on <a href="https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/13108-Tourist-services-short-term-rental-initiative_en">short-term accommodation rentals</a>.</li>
+                <li>Analysis of future chip and wafer demand for the EU Chips Act, through the <a href="https://digital-strategy.ec.europa.eu/en/library/european-chips-survey">European Chips Survey</a>.</li>
+              </ul>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="education">
+    <div class="wrap grid">
+      <div class="label"><h2>Education</h2></div>
+      <div class="content">
+        <ul class="rows">
+          <li><span class="when">Expected 2027</span><span class="what"><strong>PhD in Applied Economics</strong>, Universitat Autònoma de Barcelona</span></li>
+          <li><span class="when">Sep – Dec 2025</span><span class="what"><strong>Visiting student</strong>, University of Cambridge</span></li>
+          <li><span class="when">2019 – 2021</span><span class="what"><strong>MSc in Economics</strong>, Universitat de Barcelona <span class="detail">· Erasmus at Toulouse School of Economics, 2020</span></span></li>
+          <li><span class="when">2014 – 2018</span><span class="what"><strong>BA in Economics</strong>, Universidad de Salamanca <span class="detail">· Thesis “Bargaining Games and Applications”, cum laude</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <div class="wrap grid">
+      <div class="label"><h2>Contact</h2></div>
+      <div class="content">
+        <div class="email-row">
+          <a class="email" id="email" href="mailto:adrian.moreno.maria@uab.cat">adrian.moreno.maria@uab.cat</a>
+          <button type="button" class="copy" id="copy-email" data-copy="adrian.moreno.maria@uab.cat">Copy</button>
+        </div>
+        <address>
+          Departament d’Economia Aplicada<br>
+          Edifici B, Universitat Autònoma de Barcelona<br>
+          08193 Bellaterra (Barcelona), Spain
+        </address>
+        <div class="block">
+          <p class="k">Languages</p>
+          <ul class="inline"><li>Spanish (native)</li><li>English</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <span>© 2026 Adrián Moreno María</span>
+  <span>Updated October 2026</span>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('copy-email');
+  if(!btn) return;
+  var reset;
+  btn.addEventListener('click', function(){
+    var text = btn.getAttribute('data-copy');
+    var done = function(msg){
+      btn.textContent = msg;
+      clearTimeout(reset);
+      reset = setTimeout(function(){ btn.textContent = 'Copy'; }, 2200);
+    };
+    var selectFallback = function(){
+      try{
+        var r = document.createRange();
+        r.selectNodeContents(document.getElementById('email'));
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        done('Selected, press Ctrl+C');
+      }catch(e){ done('Copy failed'); }
+    };
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){ done('Copied'); }, selectFallback);
+      }else{ selectFallback(); }
+    }catch(e){ selectFallback(); }
+  });
+})();
+</script>
+</body>
+</html>
