@@ -1,0 +1,86 @@
+# Pulls the job market paper from Overleaf, compiles it with pdfLaTeX (TeX Live,
+# the same engine Overleaf uses) and publishes it as papers/moreno-jmp.pdf.
+# Runs only when triggered by hand: Actions -> "Update JMP from Overleaf" -> Run workflow.
+# Needs the repository secret OVERLEAF_TOKEN (Overleaf -> Account Settings -> Git integration).
+
+name: Update JMP from Overleaf
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: update-jmp
+  cancel-in-progress: false
+
+jobs:
+  update-jmp:
+    runs-on: ubuntu-latest
+    env:
+      OVERLEAF_PROJECT: 69cd1dd73d60370014d3b4d9
+      TARGET: papers/moreno-jmp.pdf
+
+    steps:
+      - name: Check out the website
+        uses: actions/checkout@v4
+
+      - name: Download the paper from Overleaf
+        env:
+          OVERLEAF_TOKEN: ${{ secrets.OVERLEAF_TOKEN }}
+        run: |
+          if [ -z "$OVERLEAF_TOKEN" ]; then
+            echo "::error::The OVERLEAF_TOKEN secret is not set."
+            exit 1
+          fi
+          git clone --depth 1 "https://git:${OVERLEAF_TOKEN}@git.overleaf.com/${OVERLEAF_PROJECT}" jmp-src
+          echo "Overleaf version: $(git -C jmp-src log -1 --format='%h %ad %s' --date=iso)"
+
+      - name: Compile with pdfLaTeX
+        # Overleaf keeps compiling past non-fatal LaTeX errors; -f does the same here.
+        continue-on-error: true
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: jmp-src
+          root_file: main.tex
+          args: -pdf -file-line-error -interaction=nonstopmode -f
+
+      - name: Check the PDF
+        run: |
+          test -s jmp-src/main.pdf || { echo "::error::No PDF was produced."; exit 1; }
+          pages=$(grep -c "/Type */Page[^s]" jmp-src/main.pdf || true)
+          size=$(stat -c %s jmp-src/main.pdf)
+          echo "PDF: ${size} bytes, about ${pages} pages"
+          if [ "$size" -lt 200000 ]; then
+            echo "::error::The PDF is suspiciously small; not publishing."
+            exit 1
+          fi
+          if grep -q "Warning: Citation .* undefined\|Warning: Reference .* undefined" jmp-src/main.log; then
+            echo "::warning::Undefined citations or references in the log."
+          fi
+
+      - name: Keep the PDF as a downloadable artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: moreno-jmp
+          path: jmp-src/main.pdf
+
+      - name: Publish on the website
+        run: |
+          cp jmp-src/main.pdf "$TARGET"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$TARGET"
+          if git diff --cached --quiet; then
+            echo "The PDF is unchanged; nothing to publish."
+            exit 0
+          fi
+          git commit -m "Update job market paper PDF from Overleaf"
+          git push
+
+      - name: Rebuild GitHub Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages will rebuild on its own."
